@@ -8,12 +8,12 @@ namespace Robot
 {
 
     
-    internal class Target
+    public class Target
     {
 
         public int Health;
-        int Damage;
-        public bool CurrentTargetisAlive ()
+        public Planets Planet;
+        public bool Alive ()
         {
 
             if ( Health > 0)

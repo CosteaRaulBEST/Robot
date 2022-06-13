@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace Robot
 {
-    internal class Planets
+    
+
+    public class Planets
     {
+        public Target[] Targets;
+        public bool ContainsLife()
+        {
+            for ( int i = 0;  i < Targets.Length; i ++ )
+            {
+               
+                if ( Targets[i].Alive() == true)
+                    return true;
+            }
+            return false;
+        }
     }
 }

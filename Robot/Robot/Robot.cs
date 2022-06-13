@@ -20,31 +20,35 @@ namespace Robot
 
     internal class Robot
     {
-        int HealthRobot;
-        public Intensity Intens;
-        public bool isActive()
+        public int HealthRobot;
+        public  Intensity EyeLasserIntensity;
+        public Target CurrentTarget;
+        public Target[] Targets;
+        public int i;
+        public bool Active;
+        public void initialize()
         {
-
-            if (HealthRobot > 0)
-            {
-                return true;
-            }
-            return false;
+            i = 0;
+            HealthRobot = 100;
+            Active = true;
         }
-        public Robot  (int healthRobot , Intensity intensity)
-        {
-           HealthRobot = healthRobot;
-           Intens = intensity;  
-        } 
 
-
-        public int FireLaserAt()
+        public void FireLaserAt(Target CurrentTarget)            
         {
-            int Damage =  (int)Intensity.Medium;
-            var ct = new Target();
-            int Health  = ct.Health - Damage;
-            Health = ct.Health;
-            return Health;
+           
+           CurrentTarget.Health =  CurrentTarget.Health - (int)EyeLasserIntensity;
+            Console.WriteLine($"Robotul ataca {CurrentTarget} si i da {(int)EyeLasserIntensity} damage");
+            Console.WriteLine($"Prin urmare {CurrentTarget} ramane cu {CurrentTarget.Health}");
+        }
+        public void AcquireNextTarget()
+        {
+            Console.WriteLine($"{CurrentTarget} a murit");
+            if ( i < Targets.Length )
+            CurrentTarget = Targets[i++];
+            else
+            {
+                Active = false;
+            }
         }
 
 
