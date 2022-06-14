@@ -38,13 +38,13 @@ namespace Robot
            
            CurrentTarget.Health =  CurrentTarget.Health - (int)EyeLasserIntensity;
             Console.WriteLine($"Robotul ataca {CurrentTarget} si i da {(int)EyeLasserIntensity} damage");
-            Console.WriteLine($"Prin urmare {CurrentTarget} ramane cu {CurrentTarget.Health}");
+            Console.WriteLine($"Prin urmare {CurrentTarget} ramane cu {CurrentTarget.Health} hp");
         }
         public void AcquireNextTarget()
         {
             Console.WriteLine($"{CurrentTarget} a murit");
-            if ( i < Targets.Length )
-            CurrentTarget = Targets[i++];
+            if ( i < Targets.Length - 1)
+            CurrentTarget = Targets[++i];
             else
             {
                 Active = false;

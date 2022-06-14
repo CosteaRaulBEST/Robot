@@ -10,7 +10,7 @@ namespace Robot
     {
         public Earth ( )
         {
-            Targets = new Target[] { new Animals(), new SuperHeroes(), new Humans() };
+            Targets = new Target[] { new Animals(), new SuperHeroes(), new Humans()  };
             
         }
     }

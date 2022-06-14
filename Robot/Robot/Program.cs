@@ -9,10 +9,11 @@ namespace Robot
             Robot robot = new Robot();
             robot.initialize();
             robot.EyeLasserIntensity = Intensity.Kill;
-            robot.Targets = new Target[] { new Animals(), new SuperHeroes(), new Humans() };
+            robot.Targets = new Target[] { new SuperHeroes() , new Animals(), new SuperHeroes(), new Humans() };
             robot.CurrentTarget = robot.Targets[0];
             Planets earth = new Earth();
-            Console.WriteLine(earth.ContainsLife());
+            Console.WriteLine($"Statut robot active: {robot.Active}");
+            Console.WriteLine($"Statut pamanul contine viata: {earth.ContainsLife()}");
             while ( robot.Active && earth.ContainsLife())
             {
                 if (robot.CurrentTarget.Alive())
@@ -22,7 +23,9 @@ namespace Robot
                 else
                     robot.AcquireNextTarget();
             }
-            Console.WriteLine("Robutul a distrus umanitatea");
+            robot.Active = false;
+            Console.WriteLine($"Statut robot active: {robot.Active}");
+            
         }
     }
 }
